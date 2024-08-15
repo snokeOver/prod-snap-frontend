@@ -265,9 +265,9 @@ const Login = () => {
                 <span className="text-sm">Don't have an account?</span>
                 <Link
                   className="label-text-alt link link-hover text-blue-700 dark:text-blue-600 font-semibold ml-2"
-                  to="/join"
+                  to="/register"
                 >
-                  join Now
+                  Register Now
                 </Link>
               </label>
             </div>

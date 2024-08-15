@@ -175,7 +175,7 @@ const Register = () => {
                     {(actnBtnLoading || gitBtnLoading || gBtnLoading) && (
                       <ButtonSpinner />
                     )}
-                    We are logging yoy in . . .
+                    We are logging you in . . .
                   </button>
                 </div>
               ) : (

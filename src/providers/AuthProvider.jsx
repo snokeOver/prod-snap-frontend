@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-import useSAxios from "../hooks/useSAxios";
 
 import {
   GithubAuthProvider,
@@ -12,14 +11,16 @@ import {
   updateProfile,
 } from "firebase/auth";
 import auth from "../helper/GAuth";
+import axios from "axios";
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  // const nSAxios = useSAxios();
+  const baseUrl = import.meta.env.VITE_BASE_URL;
 
   const [loading, setLoading] = useState(true);
   const [tokenSaved, setTokenSaved] = useState(false);
+  const [regiSuccess, setRegiSuccess] = useState(false);
   const [user, setUser] = useState(null);
   const [userDetails, setUserDetails] = useState({
     userRole: "",
@@ -62,12 +63,19 @@ const AuthProvider = ({ children }) => {
 
   // Get Token and user details
   const getTokenAndUserDetils = async (currUser) => {
-    // const { data } = await nSAxios.post("/api/jwt", { uid: currUser.uid });
-    // if (data) {
-    //   localStorage.setItem("access-token", data.token);
-    //   setUserDetails(data.userDetails);
-    //   setTokenSaved(true);
-    // }
+    try {
+      const { data } = await axios.post(`${baseUrl}/api/jwt`, {
+        uid: currUser.uid,
+      });
+
+      if (data) {
+        localStorage.setItem("access-token", data.token);
+        setUserDetails(data.userDetails);
+        setTokenSaved(true);
+      }
+    } catch (error) {
+      console.log("Jwt error:", error);
+    }
   };
   // console.log(userDetails);
 
@@ -99,7 +107,8 @@ const AuthProvider = ({ children }) => {
     updateUser,
     googleRegister,
     githubRegister,
-
+    regiSuccess,
+    setRegiSuccess,
     userDetails,
     setUserDetails,
     getTokenAndUserDetils,
