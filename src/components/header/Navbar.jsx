@@ -159,12 +159,6 @@ const Navbar = () => {
                 </li>
               </ul>
             </div>
-            <a
-              onClick={handleLogOut}
-              className="btn border bg-transparent hover:bg-transparent  hover:border-prime hover:text-sky-800 dark:hover:text-gray-100 border-prime py-2 px-3 rounded-sm  text-prime btn-sm ml-2"
-            >
-              Logout
-            </a>
           </>
         ) : (
           <>
