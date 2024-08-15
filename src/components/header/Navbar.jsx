@@ -39,25 +39,11 @@ const Navbar = () => {
       <NavigationLink destination="/" name="Home" nested="false" />
 
       {/* Survey link */}
-      <NavigationLink destination="/surveys" name="Surveys" nested="false" />
-
-      {/* Company link */}
-      <li>
-        <details>
-          <summary className="dark:text-gray-100">Company</summary>
-          <ul className="p-2 rounded-t-none rounded-b-md z-50">
-            {/* About Link */}
-            <NavigationLink destination="/about" name="About" nested="true" />
-
-            {/* Contact Link */}
-            <NavigationLink
-              destination="/contact"
-              name="Contact"
-              nested="true"
-            />
-          </ul>
-        </details>
-      </li>
+      <NavigationLink
+        destination="/all-products"
+        name="All Products"
+        nested="false"
+      />
 
       {loading ? (
         <RingLoading />
@@ -75,9 +61,6 @@ const Navbar = () => {
           )}
         </>
       )}
-
-      {/* Survey link */}
-      <NavigationLink destination="/payment" name="Pricing" nested="false" />
     </>
   );
 

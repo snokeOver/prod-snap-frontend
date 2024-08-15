@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const DataContext = createContext();
 
 const DataProvider = ({ children }) => {
-  const siteName = "ProdSnap";
+  const siteName = "MobileSnap";
   const siteLogo = "/logo.svg";
   const [pageLoading, setPageLoading] = useState(false);
   const [gBtnLoading, setGBtnLoading] = useState(false);
