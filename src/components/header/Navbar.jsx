@@ -44,23 +44,6 @@ const Navbar = () => {
         name="All Products"
         nested="false"
       />
-
-      {loading ? (
-        <RingLoading />
-      ) : (
-        <>
-          {user && (
-            <>
-              {/* Dashboard link */}
-              <NavigationLink
-                destination={`/dashboard/admin`}
-                name="Dashboard"
-                nested="false"
-              />
-            </>
-          )}
-        </>
-      )}
     </>
   );
 
