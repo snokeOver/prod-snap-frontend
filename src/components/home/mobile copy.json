@@ -1,0 +1,110 @@
+[
+  {
+    "name": "iPhone 13 Pro",
+    "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-pro-01.jpg",
+    "description": "The iPhone 13 Pro features a Super Retina XDR display, A15 Bionic chip, and a Pro camera system for stunning photography.",
+    "price": 999,
+    "brand": "Apple",
+    "ratings": 4.8,
+    "createdAt": "2023-07-01T12:30:00Z"
+  },
+  {
+    "name": "Samsung Galaxy S21",
+    "image": "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s21-5g-0.jpg",
+    "description": "Experience the Galaxy S21's 120Hz display, advanced camera system, and lightning-fast Exynos 2100 processor.",
+    "price": 799,
+    "brand": "Samsung",
+    "ratings": 4.7,
+    "createdAt": "2023-07-02T08:15:00Z"
+  },
+  {
+    "name": "Google Pixel 6",
+    "image": "https://fdn2.gsmarena.com/vv/pics/google/google-pixel-6-1.jpg",
+    "description": "Google Pixel 6 offers an exceptional camera, pure Android experience, and Tensor chip for enhanced performance.",
+    "price": 699,
+    "brand": "Google",
+    "ratings": 4.6,
+    "createdAt": "2023-07-03T14:20:00Z"
+  },
+  {
+    "name": "OnePlus 9 Pro",
+    "image": "https://fdn2.gsmarena.com/vv/pics/oneplus/oneplus-9-pro-1.jpg",
+    "description": "OnePlus 9 Pro boasts a fluid 120Hz display, Snapdragon 888, and Hasselblad camera for professional-quality photos.",
+    "price": 899,
+    "brand": "OnePlus",
+    "ratings": 4.5,
+    "createdAt": "2023-07-04T10:45:00Z"
+  },
+  {
+    "name": "Xiaomi Mi 11",
+    "image": "https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-mi11-1.jpg",
+    "description": "Xiaomi Mi 11 delivers flagship performance with a Snapdragon 888, AMOLED display, and 108MP camera.",
+    "price": 749,
+    "brand": "Xiaomi",
+    "ratings": 4.4,
+    "createdAt": "2023-07-05T16:35:00Z"
+  },
+  {
+    "name": "Sony Xperia 5 III",
+    "image": "https://fdn2.gsmarena.com/vv/pics/sony/sony-xperia-5-iii-02.jpg",
+    "description": "Sony Xperia 5 III combines compact size, powerful performance, and a cinematic display for a premium experience.",
+    "price": 899,
+    "brand": "Sony",
+    "ratings": 4.3,
+    "createdAt": "2023-07-06T09:50:00Z"
+  },
+  {
+    "name": "Huawei P50 Pro",
+    "image": "https://fdn2.gsmarena.com/vv/pics/huawei/huawei-p50-pro-0.jpg",
+    "description": "The Huawei P50 Pro features an exceptional camera system, powerful performance, and a sleek design.",
+    "price": 999,
+    "brand": "Huawei",
+    "ratings": 4.7,
+    "createdAt": "2023-07-07T13:25:00Z"
+  },
+  {
+    "name": "Oppo Find X3 Pro",
+    "image": "https://fdn2.gsmarena.com/vv/pics/oppo/oppo-find-x3-pro-4.jpg",
+    "description": "Oppo Find X3 Pro offers a stunning 10-bit display, advanced camera system, and fast performance.",
+    "price": 1099,
+    "brand": "Oppo",
+    "ratings": 4.6,
+    "createdAt": "2023-07-08T11:40:00Z"
+  },
+  {
+    "name": "Realme GT 5G",
+    "image": "https://fdn2.gsmarena.com/vv/pics/realme/realme-gt-5g-2.jpg",
+    "description": "Realme GT 5G delivers flagship performance, 120Hz display, and a stylish design at an affordable price.",
+    "price": 549,
+    "brand": "Realme",
+    "ratings": 4.4,
+    "createdAt": "2023-07-09T12:50:00Z"
+  },
+  {
+    "name": "Vivo X60 Pro",
+    "image": "https://fdn2.gsmarena.com/vv/pics/vivo/vivo-x60-pro-global-3.jpg",
+    "description": "Vivo X60 Pro offers a gimbal camera system, smooth performance, and a stunning AMOLED display.",
+    "price": 799,
+    "brand": "Vivo",
+    "ratings": 4.5,
+    "createdAt": "2023-07-10T15:20:00Z"
+  },
+  {
+    "name": "iPhone 12",
+    "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-12-r1.jpg",
+    "description": "iPhone 12 features a stunning OLED display, A14 Bionic chip, and 5G capabilities for blazing-fast speeds.",
+    "price": 799,
+    "brand": "Apple",
+    "ratings": 4.7,
+    "createdAt": "2023-07-11T10:10:00Z"
+  },
+  {
+    "name": "Samsung Galaxy Note 20 Ultra",
+    "image": "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-note20-ultra-1.jpg",
+    "description": "Galaxy Note 20 Ultra is the ultimate productivity device with S Pen and a large 6.9-inch display.",
+    "price": 1199,
+    "brand": "Samsung",
+    "ratings": 4.8,
+    "createdAt": "2023-07-12T14:05:00Z"
+  }
+]

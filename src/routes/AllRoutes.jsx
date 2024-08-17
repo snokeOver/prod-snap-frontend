@@ -7,6 +7,7 @@ import Register from "../pages/Register";
 import AllProducts from "../pages/AllProducts";
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
+import MobileDetails from "../pages/MobileDetails";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AllProducts />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/mobile-details/:id",
+        element: (
+          <PrivateRoute>
+            <MobileDetails />
           </PrivateRoute>
         ),
       },
