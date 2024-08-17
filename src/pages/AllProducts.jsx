@@ -35,7 +35,7 @@ const AllProducts = () => {
     refetch: refetchMobileData,
   } = useGetData({
     apiRoute: "all-mobiles",
-    additionalQuerry: `page=${currentPage}&size=${itemsPerPage}&search=${search}&sort=${currSort}&category=${currCategory}`,
+    additionalQuerry: `page=${currentPage}&size=${itemsPerPage}&search=${search}&sort=${currSort}&category=${currCategory}&priceRange=${currPriceRange}`,
   });
 
   //   handle previous page
@@ -175,12 +175,12 @@ const AllProducts = () => {
                 type="text"
                 className="select category-select select-bordered w-full bg-sky-100 dark:bg-gray-800 border-sky-500 dark:border-yellow-100"
               >
-                <option value="">Select A Price Range</option>
-                <option value="0">0 - 300 USD</option>
-                <option value="300">300 - 500 USD</option>
-                <option value="500">500 - 900 USD</option>
-                <option value="900">900 - 1200 USD</option>
-                <option value="1200">1200 USD and above</option>
+                <option value="">Price Range</option>
+                <option value="1">0 - 300 USD</option>
+                <option value="2">300 - 500 USD</option>
+                <option value="3">500 - 900 USD</option>
+                <option value="4">900 - 1200 USD</option>
+                <option value="5">1200 USD & Above</option>
               </select>
             </div>
           </div>
