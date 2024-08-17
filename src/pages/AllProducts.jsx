@@ -16,6 +16,7 @@ const AllProducts = () => {
 
   const [search, setSearch] = useState("");
   const [currSort, setCurrSort] = useState("");
+  const [currPriceRange, setCurrPriceRange] = useState("");
   const [currCategory, setCurrCategory] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -90,7 +91,14 @@ const AllProducts = () => {
   // Refetch data when currentPage or itemsPerPage changes
   useEffect(() => {
     refetchMobileData();
-  }, [currentPage, itemsPerPage, search, currSort, currCategory]);
+  }, [
+    currentPage,
+    itemsPerPage,
+    search,
+    currSort,
+    currCategory,
+    currPriceRange,
+  ]);
 
   return (
     <InitialPageStructure
@@ -146,12 +154,33 @@ const AllProducts = () => {
                 type="text"
                 className="select category-select select-bordered w-full bg-sky-100 dark:bg-gray-800 border-sky-500 dark:border-yellow-100"
               >
-                <option value="">Select a Category</option>
+                <option value="">Select a Brand</option>
                 {mobileCategories?.map((category) => (
                   <option key={category} value={category}>
                     {category}
                   </option>
                 ))}
+              </select>
+            </div>
+          </div>
+
+          {/* Price Range Part */}
+          <div className="flex flex-col lg:flex-row w-full">
+            <div className="form-control min-w-36">
+              <select
+                onChange={(e) => {
+                  setCurrentPage(1);
+                  setCurrPriceRange(e.target.value);
+                }}
+                type="text"
+                className="select category-select select-bordered w-full bg-sky-100 dark:bg-gray-800 border-sky-500 dark:border-yellow-100"
+              >
+                <option value="">Select A Price Range</option>
+                <option value="0">0 - 300 USD</option>
+                <option value="300">300 - 500 USD</option>
+                <option value="500">500 - 900 USD</option>
+                <option value="900">900 - 1200 USD</option>
+                <option value="1200">1200 USD and above</option>
               </select>
             </div>
           </div>
