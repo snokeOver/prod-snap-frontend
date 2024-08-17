@@ -42,11 +42,11 @@ const MobileDetails = () => {
                   <h2 className="card-title text-2xl md:text-4xl font-bold text-heading-color playfair-font">
                     {aMobile?.name}
                   </h2>
-                  <div>
-                    <h5 className=" px-4 py-1 bg-primary text-gray-700 font-semibold rounded-xl inline-block">
-                      $ {aMobile?.price}
-                    </h5>
-                  </div>
+                </div>
+                <div>
+                  <h5 className=" px-4 py-1 bg-primary text-gray-700 font-semibold rounded-xl inline-block">
+                    $ {aMobile?.price.toFixed(2)}
+                  </h5>
                 </div>
 
                 <div className="my-2">
