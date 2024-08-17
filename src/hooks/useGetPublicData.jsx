@@ -14,7 +14,7 @@ const useGetPublicData = ({ apiRoute, dataId = "", additionalQuerry = "" }) => {
       const { data } = await sAxios.get(
         `/api/${apiRoute}/?dataId=${dataId}&${additionalQuerry}`
       );
-      // console.log(data.response);
+      console.log(data.response);
       return data.response;
     },
   });

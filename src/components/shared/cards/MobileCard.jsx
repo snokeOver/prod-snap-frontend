@@ -2,11 +2,14 @@ import { BsFillEyeFill } from "react-icons/bs";
 
 import { useNavigate } from "react-router-dom";
 
-import { truncateDescription } from "../../../helper/helperFunction";
+import {
+  formatDate,
+  truncateDescription,
+} from "../../../helper/helperFunction";
 
 const MobileCard = ({ mobile }) => {
   const navigate = useNavigate();
-  const { _id, image, name, description, price, brand } = mobile;
+  const { _id, image, name, description, price, brand, createdAt } = mobile;
 
   return (
     <div className="card card-compact bg-base-100 rounded-xl border dark:border-gray-500 border-gray-300 shadow-xl hover:scale-[1.02] duration-500">
@@ -36,12 +39,17 @@ const MobileCard = ({ mobile }) => {
         </div>
 
         <div className="w-full flex items-center gap-2 text-sm mt-2">
-          <h4 className="">Category:</h4>
+          <h4 className="">Brand:</h4>
           <h4 className=" px-2 text-lg w-fit">{brand}</h4>
         </div>
         <div className="w-full flex items-center gap-2 text-sm ">
           <h4 className="">Price:</h4>
           <h4 className=" px-2 text-lg w-fit text-primary"> $ {price}</h4>
+        </div>
+
+        <div className="w-full flex items-center gap-2 text-sm ">
+          <h4 className="">Added Date:</h4>
+          <h4 className=" px-2 text-lg w-fit"> {formatDate(createdAt)}</h4>
         </div>
 
         <div className="card-actions justify-end mt-auto">

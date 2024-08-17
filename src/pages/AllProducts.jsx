@@ -1,5 +1,248 @@
+import { TfiLayoutGrid3, TfiLayoutMenuV } from "react-icons/tfi";
+import { IoIosSearch } from "react-icons/io";
+
+import { useEffect, useState } from "react";
+import useData from "../hooks/useData";
+import useGetData from "../hooks/useGetData";
+import InitialPageStructure from "../components/shared/InitialPageStructure";
+import PrimaryButton from "../components/shared/PrimaryButton";
+import MobileCard from "../components/shared/cards/MobileCard";
+import TableViewStructure from "../components/shared/TableViewStructure";
+import PaginationBtns from "../components/allProducts/PaginationBtns";
+import MobileTableRow from "../components/allProducts/MobileTableRow";
+
 const AllProducts = () => {
-  return <div>All Products</div>;
+  const { mobileCategories } = useData();
+
+  const [search, setSearch] = useState("");
+  const [currSort, setCurrSort] = useState("");
+  const [currCategory, setCurrCategory] = useState("");
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalSurveys, setTotalSurveys] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(8);
+  const numberOfPages = Math.ceil(totalSurveys / itemsPerPage);
+  const pages = [...Array(numberOfPages).keys()];
+  const [prevDisabled, setPrevDisabled] = useState(true);
+  const [nextDisabled, setNextDisabled] = useState(false);
+  const [layoutSelect, setLayoutSelect] = useState(false);
+
+  const {
+    data: mobileData,
+    isPending,
+    error,
+    refetch: refetchMobileData,
+  } = useGetData({
+    apiRoute: "all-mobiles",
+    additionalQuerry: `page=${currentPage}&size=${itemsPerPage}&search=${search}&sort=${currSort}&category=${currCategory}`,
+  });
+
+  //   handle previous page
+  const handlePrevious = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  //   handle Next page
+  const handleNext = () => {
+    if (currentPage < numberOfPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  // Set when the next and previous button will be visible and disable
+  useEffect(() => {
+    if (currentPage === 1) {
+      setPrevDisabled(true);
+    } else {
+      setPrevDisabled(false);
+    }
+    if (currentPage === numberOfPages) {
+      setNextDisabled(true);
+    } else {
+      setNextDisabled(false);
+    }
+    if (currentPage === 1 && numberOfPages === 1) {
+      setPrevDisabled(true);
+      setNextDisabled(true);
+    }
+  }, [currentPage, numberOfPages]);
+
+  //   set Total Post Numbers
+  useEffect(() => {
+    //  if (totalData) setTotalSurveys(totalData.length);
+    if (mobileData) setTotalSurveys(mobileData[1] || 0);
+  }, [mobileData]);
+
+  // Handle the Search functionality
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    const searchValue = e.target.parentNode.querySelector(
+      'input[name="searchVal"]'
+    ).value;
+    setSearch(searchValue);
+    e.target.parentNode.querySelector('input[name="searchVal"]').value = "";
+    setCurrentPage(1);
+  };
+
+  // Refetch data when currentPage or itemsPerPage changes
+  useEffect(() => {
+    refetchMobileData();
+  }, [currentPage, itemsPerPage, search, currSort, currCategory]);
+
+  return (
+    <InitialPageStructure
+      pageName="All Products"
+      pageTitle="Discover All Our Products"
+      error={error}
+      isPending={isPending}
+      data={[...Array(mobileData[1]).keys()]}
+      emptyDataMsg="No Valid Mobiles Found!"
+      totalName="Matched Mobile"
+      customSkeleton="Card"
+    >
+      {/* navigation bar */}
+      <div className="flex items-center flex-col xl:flex-row gap-4 md:gap-10 justify-between min-h-0 bg-blue-200 dark:bg-gray-800 rounded-lg w-[98%] lg:w-[90%] mx-auto py-5 lg:py-2 px-5">
+        {/* start part */}
+        <div className="flex flex-1 w-full">
+          <div className="flex gap-5 justify-between items-center w-full">
+            {/* Search Input */}
+            <form onSubmit={handleSearch} className="w-full">
+              <fieldset className="form-control w-full">
+                <div className=" relative text-gray-400 text-xl font-semibold">
+                  <input
+                    type="text"
+                    name="searchVal"
+                    placeholder="Search . . . "
+                    className="input search-input  w-full bg-transparent rounded-md  placeholder-gray-600 dark:placeholder-gray-100 border-sky-500 dark:border-yellow-100"
+                  />
+                  <IoIosSearch
+                    onClick={handleSearch}
+                    className="absolute cursor-pointer hover:text-primary right-5  top-3"
+                  />
+                </div>
+              </fieldset>
+            </form>
+
+            {/* Reset button */}
+            <div onClick={() => setSearch("")}>
+              <PrimaryButton text="Reset" />
+            </div>
+          </div>
+        </div>
+
+        {/* End part */}
+        <div className="flex items-center gap-3 md:gap-10 flex-1 flex-col md:flex-row w-full lg:justify-end">
+          {/* Category Part */}
+          <div className="flex flex-col lg:flex-row w-full">
+            <div className="form-control min-w-44">
+              <select
+                onChange={(e) => {
+                  setCurrentPage(1);
+                  setCurrCategory(e.target.value);
+                }}
+                type="text"
+                className="select category-select select-bordered w-full bg-sky-100 dark:bg-gray-800 border-sky-500 dark:border-yellow-100"
+              >
+                <option value="">Select a Category</option>
+                {mobileCategories?.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {/* Sorting Part */}
+          <div className="flex flex-col lg:flex-row w-full">
+            <div className="form-control min-w-36">
+              <select
+                onChange={(e) => {
+                  setCurrentPage(1);
+                  setCurrSort(e.target.value);
+                }}
+                type="text"
+                className="select category-select select-bordered w-full bg-sky-100 dark:bg-gray-800 border-sky-500 dark:border-yellow-100"
+              >
+                <option value="">Select A Filter</option>
+                <option value="price:asc">Price Up</option>
+                <option value="price:des">Price Down</option>
+                <option value="creation:asc">Oldest First</option>
+                <option value="creation:des">Latest First</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Option part */}
+          <div className="flex gap-4 w-fit">
+            <div className="hover:scale-125 duration-500">
+              <TfiLayoutGrid3
+                onClick={() => setLayoutSelect(false)}
+                className={`cursor-pointer hover:text-primary text-2xl ${
+                  !layoutSelect ? "text-primary" : ""
+                }`}
+              />
+            </div>
+            <div className="hover:scale-125 duration-500">
+              <TfiLayoutMenuV
+                onClick={() => setLayoutSelect(true)}
+                className={`cursor-pointer hover:text-primary text-2xl ${
+                  layoutSelect ? "text-primary" : ""
+                }`}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {!layoutSelect ? (
+        <>
+          {/* Card View Data */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10 px-5 group mt-2 md:mt-10">
+            {mobileData[0]?.map((mobile) => (
+              <MobileCard key={mobile._id} mobile={mobile} />
+            ))}
+          </div>
+        </>
+      ) : (
+        <div className="mt-10">
+          {/* Table view */}
+          <TableViewStructure
+            data={mobileData[0] || []}
+            tabCols={["Name", "Description", "Price", "Brand"]}
+            actionBtnNumbers={1}
+          >
+            {mobileData[0] &&
+              mobileData[0].map((singleSurvey, index) => (
+                <MobileTableRow
+                  index={index}
+                  key={singleSurvey._id}
+                  singleSurvey={singleSurvey}
+                />
+              ))}
+          </TableViewStructure>
+        </div>
+      )}
+
+      {/* Pagination Buttons */}
+      <PaginationBtns
+        pages={pages}
+        currentPage={currentPage}
+        numberOfPages={numberOfPages}
+        setCurrentPage={setCurrentPage}
+        prevDisabled={prevDisabled}
+        handlePrevious={handlePrevious}
+        itemsPerPage={itemsPerPage}
+        setItemsPerPage={setItemsPerPage}
+        setPrevDisabled={setPrevDisabled}
+        nextDisabled={nextDisabled}
+        handleNext={handleNext}
+      />
+    </InitialPageStructure>
+  );
 };
 
 export default AllProducts;

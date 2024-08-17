@@ -9,6 +9,18 @@ const DataProvider = ({ children }) => {
   const [gBtnLoading, setGBtnLoading] = useState(false);
   const [gitBtnLoading, setGitBtnLoading] = useState(false);
   const [actnBtnLoading, setActnBtnLoading] = useState(false);
+  const mobileCategories = [
+    "Apple",
+    "Samsung",
+    "Google",
+    "OnePlus",
+    "Sony",
+    "Xiaomi",
+    "Oppo",
+    "Huawei",
+    "Vivo",
+    "Realme",
+  ];
 
   const [toggle, setToggle] = useState(false);
 
@@ -34,6 +46,7 @@ const DataProvider = ({ children }) => {
     setCurrTheme,
     toastMsg,
     setToastMsg,
+    mobileCategories,
   };
   return (
     <DataContext.Provider value={authItems}>{children}</DataContext.Provider>
