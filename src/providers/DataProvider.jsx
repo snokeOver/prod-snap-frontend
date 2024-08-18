@@ -4,7 +4,7 @@ export const DataContext = createContext();
 
 const DataProvider = ({ children }) => {
   const siteName = "MobileSnap";
-  const siteLogo = "/logo.svg";
+  const siteLogo = "/icon.png";
   const [pageLoading, setPageLoading] = useState(false);
   const [gBtnLoading, setGBtnLoading] = useState(false);
   const [gitBtnLoading, setGitBtnLoading] = useState(false);
